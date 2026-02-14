@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>She Said Yes!</title>
 
 <style>
@@ -9,27 +11,57 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #ff758c, #ff7eb3);
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .card {
-    background: #f3f3f3;
-    padding: 40px;
+    background: #ffffff;
+    padding: 25px;
     border-radius: 25px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    width: 400px;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Image Styling */
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    object-fit: cover;
 }
 
 h2 {
     margin-top: 10px;
+    color: #ff3366;
+    font-size: 22px;
 }
 
 p {
     line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+    .card {
+        padding: 18px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
 }
 </style>
 </head>
@@ -37,36 +69,45 @@ p {
 <body>
 
 <div class="card">
-    <div style="font-size:50px;">🤗 🌸 💕</div>
+
+    <!-- Your Romantic Image -->
+    <img src="couple2.jpg" alt="Our Love ❤️">
+
+    <div style="font-size:40px;">🤗 🌸 💕</div>
 
     <h2>Yay! She said YES 💞</h2>
 
-    <p> Congratulations, My Dearest Kiran ❤️ <br></p>
+    <p><b>Congratulations, My Dearest Kiran ❤️</b></p>
         
-    <p> Today is not just a day… it’s a memory I will cherish for a lifetime ✨<br>
-        Our first Valentine as husband and wife makes my heart feel so full and grateful 💑<br>
+    <p>
+        Today is not just a day… it’s a memory I will cherish for a lifetime ✨<br>
+        Our first Valentine as husband and wife makes my heart feel so full and grateful 💑
     </p>
 
-    <p> You are my today, my tomorrow, and my forever.<br>
-        My home, my happiness, my biggest blessing. <br></p>
-
-    <p> Thank you for being my beautiful wife,<br>
-        my best friend, my love, my everything 💖 <br></p>
-
-    <p> I promise to love you more with every sunrise,<br>
-        to stand by you in every moment,<br>
-        and to hold your hand forever 🤝❤️<br>
+    <p>
         You are my today, my tomorrow, and my forever.<br>
+        My home, my happiness, my biggest blessing.
     </p>
 
-    <p><b>I love you endlessly, now and always 💘🌹</b><br></p>
+    <p>
+        Thank you for being my beautiful wife,<br>
+        my best friend, my love, my everything 💖
+    </p>
 
-<p>     Forever Yours, <br>
-        Your Loving Husband 💞 <br></p>
+    <p>
+        I promise to love you more with every sunrise,<br>
+        to stand by you in every moment,<br>
+        and to hold your hand forever 🤝❤️
+    </p>
+
+    <p><b>I love you endlessly, now and always 💘🌹</b></p>
+
+    <p>
+        Forever Yours,<br>
+        Your Loving Husband 💞
+    </p>
+
 </div>
 
 </body>
-
 </html>
-
-
