@@ -44,19 +44,11 @@ h2 {
     font-size: 22px;
 }
 
-p {
+#typeText {
     line-height: 1.6;
     font-size: 15px;
-}
-
-.music-btn {
     margin-top: 15px;
-    padding: 10px 18px;
-    border-radius: 20px;
-    border: none;
-    background: #ff4d6d;
-    color: white;
-    cursor: pointer;
+    white-space: pre-wrap;
 }
 
 @media (max-width: 480px) {
@@ -68,8 +60,12 @@ p {
         font-size: 20px;
     }
 
-    p {
+    #typeText {
         font-size: 14px;
+    }
+
+    .card img {
+        width: 70%;
     }
 }
 </style>
@@ -95,13 +91,11 @@ window.addEventListener("load", function () {
 
     // Try autoplay
     music.play().catch(function () {
-        // If blocked, wait for first interaction
         document.addEventListener("touchstart", playMusic, { once: true });
         document.addEventListener("click", playMusic, { once: true });
     });
 });
 </script>
-
 
 <div class="card">
 
@@ -111,40 +105,49 @@ window.addEventListener("load", function () {
 
     <h2>Yay! She said YES 💞</h2>
 
-    <p><b>Congratulations, My Dearest Kiran ❤️</b></p>
-        
-    <p>
-        Today is not just a day… it’s a memory I will cherish for a lifetime ✨<br>
-        Our first Valentine as husband and wife makes my heart feel so full and grateful 💑
-    </p>
-
-    <p>
-        You are my today, my tomorrow, and my forever.<br>
-        My home, my happiness, my biggest blessing.
-    </p>
-
-    <p>
-        Thank you for being my beautiful wife,<br>
-        my best friend, my love, my everything 💖
-    </p>
-
-    <p>
-        I promise to love you more with every sunrise,<br>
-        to stand by you in every moment,<br>
-        and to hold your hand forever 🤝❤️
-    </p>
-
-    <p><b>I love you endlessly, now and always 💘🌹</b></p>
-
-    <p>
-        Forever Yours,<br>
-        Your Loving Husband 💞
-    </p>
+    <div id="typeText"></div>
 
 </div>
 
+<script>
+const message = `
+Congratulations, My Dearest Kiran ❤️
+
+Today is not just a day… it’s a memory I will cherish for a lifetime ✨
+Our first Valentine as husband and wife makes my heart feel so full and grateful 💑
+
+You are my today, my tomorrow, and my forever.
+My home, my happiness, my biggest blessing.
+
+Thank you for being my beautiful wife,
+my best friend, my love, my everything 💖
+
+I promise to love you more with every sunrise,
+to stand by you in every moment,
+and to hold your hand forever 🤝❤️
+
+I love you endlessly, now and always 💘🌹
+
+Forever Yours,
+Your Loving Husband 💞
+`;
+
+let i = 0;
+const speed = 35;
+const textContainer = document.getElementById("typeText");
+
+function typeWriter() {
+    if (i < message.length) {
+        textContainer.innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+window.addEventListener("load", function () {
+    setTimeout(typeWriter, 800);
+});
+</script>
+
 </body>
 </html>
-
-
-
