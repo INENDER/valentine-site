@@ -16,6 +16,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    overflow: hidden;
 }
 
 .card {
@@ -26,6 +27,8 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     width: 100%;
     max-width: 420px;
+    position: relative;
+    z-index: 2;
 }
 
 /* Image Styling */
@@ -44,11 +47,31 @@ h2 {
     font-size: 22px;
 }
 
-#typeText {
+p {
     line-height: 1.6;
     font-size: 15px;
-    margin-top: 15px;
-    white-space: pre-wrap;
+}
+
+/* Floating Roses */
+.rose {
+    position: fixed;
+    bottom: -50px;
+    font-size: 24px;
+    animation: floatRose linear infinite;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatRose {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -60,7 +83,7 @@ h2 {
         font-size: 20px;
     }
 
-    #typeText {
+    p {
         font-size: 14px;
     }
 
@@ -105,49 +128,6 @@ window.addEventListener("load", function () {
 
     <h2>Yay! She said YES 💞</h2>
 
-    <div id="typeText"></div>
+    <p id="typingText"></p>
 
-</div>
-
-<script>
-const message = `
-Congratulations, My Dearest Kiran ❤️
-
-Today is not just a day… it’s a memory I will cherish for a lifetime ✨
-Our first Valentine as husband and wife makes my heart feel so full and grateful 💑
-
-You are my today, my tomorrow, and my forever.
-My home, my happiness, my biggest blessing.
-
-Thank you for being my beautiful wife,
-my best friend, my love, my everything 💖
-
-I promise to love you more with every sunrise,
-to stand by you in every moment,
-and to hold your hand forever 🤝❤️
-
-I love you endlessly, now and always 💘🌹
-
-Forever Yours,
-Your Loving Husband 💞
-`;
-
-let i = 0;
-const speed = 35;
-const textContainer = document.getElementById("typeText");
-
-function typeWriter() {
-    if (i < message.length) {
-        textContainer.innerHTML += message.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-    }
-}
-
-window.addEventListener("load", function () {
-    setTimeout(typeWriter, 800);
-});
-</script>
-
-</body>
-</html>
+</di
