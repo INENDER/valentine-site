@@ -28,7 +28,7 @@ body {
     width: 100%;
     max-width: 420px;
     position: relative;
-    z-index: 2;
+    z-index: 5;
 }
 
 /* Image Styling */
@@ -52,24 +52,56 @@ p {
     font-size: 15px;
 }
 
-/* Floating Roses */
-.rose {
+/* Floating Hearts */
+.heart {
     position: fixed;
     bottom: -50px;
-    font-size: 24px;
-    animation: floatRose linear infinite;
+    font-size: 22px;
+    animation: floatUp linear infinite;
     opacity: 0.9;
     pointer-events: none;
     z-index: 1;
 }
 
-@keyframes floatRose {
+/* Floating Roses */
+.rose {
+    position: fixed;
+    bottom: -50px;
+    font-size: 24px;
+    animation: floatUp linear infinite;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatUp {
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
     100% {
         transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Celebration Sparkles */
+.sparkle {
+    position: fixed;
+    top: -10px;
+    font-size: 18px;
+    animation: fallDown linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh);
         opacity: 0;
     }
 }
@@ -112,7 +144,6 @@ window.addEventListener("load", function () {
         document.removeEventListener("click", playMusic);
     }
 
-    // Try autoplay
     music.play().catch(function () {
         document.addEventListener("touchstart", playMusic, { once: true });
         document.addEventListener("click", playMusic, { once: true });
@@ -130,4 +161,84 @@ window.addEventListener("load", function () {
 
     <p id="typingText"></p>
 
-</di
+</div>
+
+<!-- Typing Effect -->
+<script>
+const message = `Congratulations, My Dearest Kiran ❤️
+
+Today is not just a day… it’s a memory I will cherish for a lifetime ✨
+Our first Valentine as husband and wife makes my heart feel so full and grateful 💑
+
+You are my today, my tomorrow, and my forever.
+My home, my happiness, my biggest blessing.
+
+Thank you for being my beautiful wife,
+my best friend, my love, my everything 💖
+
+I promise to love you more with every sunrise,
+to stand by you in every moment,
+and to hold your hand forever 🤝❤️
+
+I love you endlessly, now and always 💘🌹
+
+Forever Yours,
+Your Loving Husband 💞`;
+
+let i = 0;
+const speed = 35;
+const typingElement = document.getElementById("typingText");
+
+function typeWriter() {
+    if (i < message.length) {
+        if (message.charAt(i) === "\n") {
+            typingElement.innerHTML += "<br><br>";
+        } else {
+            typingElement.innerHTML += message.charAt(i);
+        }
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+window.addEventListener("load", function () {
+    setTimeout(typeWriter, 800);
+});
+</script>
+
+<!-- Floating Hearts & Roses -->
+<script>
+for (let i = 0; i < 20; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (6 + Math.random() * 5) + "s";
+    heart.style.fontSize = (18 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+}
+
+for (let i = 0; i < 15; i++) {
+    let rose = document.createElement("div");
+    rose.className = "rose";
+    rose.innerHTML = "🌹";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.animationDuration = (7 + Math.random() * 5) + "s";
+    rose.style.fontSize = (18 + Math.random() * 20) + "px";
+    document.body.appendChild(rose);
+}
+
+/* Celebration Sparkles */
+for (let i = 0; i < 25; i++) {
+    let sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.innerHTML = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.animationDuration = (4 + Math.random() * 3) + "s";
+    sparkle.style.fontSize = (14 + Math.random() * 10) + "px";
+    document.body.appendChild(sparkle);
+}
+</script>
+
+</body>
+</html>
