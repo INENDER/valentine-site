@@ -128,9 +128,30 @@ button {
 <body>
 
 <!-- Background Music -->
-<audio id="bgMusic" autoplay loop>
+<audio id="bgMusic" loop>
     <source src="music1.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+window.addEventListener("load", function () {
+    var music = document.getElementById("bgMusic");
+    music.volume = 0.8;
+
+    function playMusic() {
+        music.play();
+        document.removeEventListener("touchstart", playMusic);
+        document.removeEventListener("click", playMusic);
+    }
+
+    // Try autoplay
+    music.play().catch(function () {
+        // If blocked, wait for first interaction
+        document.addEventListener("touchstart", playMusic, { once: true });
+        document.addEventListener("click", playMusic, { once: true });
+    });
+});
+</script>
+
 
 <!-- Floating Hearts -->
 <script>
@@ -155,9 +176,6 @@ for (let i = 0; i < 20; i++) {
     <button class="no" id="noBtn">No</button>
 
     <div class="note">(No is a little shy 😈)</div>
-
-    <!-- Music Play Button -->
-    <button class="music-btn" onclick="playMusic()">Tap to Play Music 🎵</button>
 
 </div>
 
@@ -187,4 +205,5 @@ noBtn.addEventListener("mouseover", function() {
 
 </body>
 </html>
+
 
