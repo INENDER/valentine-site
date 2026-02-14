@@ -51,7 +51,6 @@ body {
     backdrop-filter: blur(5px);
 }
 
-/* Image Styling */
 .card img {
     width: 100%;
     height: auto;
@@ -98,7 +97,17 @@ button {
     margin-top: 10px;
 }
 
-/* Mobile Optimization */
+.music-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+}
+
 @media (max-width: 480px) {
     .card {
         padding: 18px;
@@ -118,6 +127,11 @@ button {
 
 <body>
 
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="music1.mp3" type="audio/mpeg">
+</audio>
+
 <!-- Floating Hearts -->
 <script>
 for (let i = 0; i < 20; i++) {
@@ -133,7 +147,6 @@ for (let i = 0; i < 20; i++) {
 
 <div class="card" id="card">
 
-    <!-- Your Uploaded Image -->
     <img src="couple1.jpg" alt="Our Beautiful Moment ❤️">
 
     <h2>Will you be my Valentine? ✨</h2>
@@ -142,6 +155,10 @@ for (let i = 0; i < 20; i++) {
     <button class="no" id="noBtn">No</button>
 
     <div class="note">(No is a little shy 😈)</div>
+
+    <!-- Music Play Button -->
+    <button class="music-btn" onclick="playMusic()">Tap to Play Music 🎵</button>
+
 </div>
 
 <script>
@@ -149,18 +166,20 @@ function goYes() {
     window.location.href = "yes.html";
 }
 
+function playMusic() {
+    var music = document.getElementById("bgMusic");
+    music.play();
+}
+
 const noBtn = document.getElementById("noBtn");
 const card = document.getElementById("card");
 
 noBtn.addEventListener("mouseover", function() {
     const cardRect = card.getBoundingClientRect();
-
     const maxX = cardRect.width - noBtn.offsetWidth - 20;
     const maxY = cardRect.height - noBtn.offsetHeight - 20;
-
     const randomX = Math.floor(Math.random() * maxX);
     const randomY = Math.floor(Math.random() * maxY);
-
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
 });
